@@ -1,10 +1,15 @@
 package Controlleur;
 
+import java.util.concurrent.ThreadLocalRandom;
+
+import Terrain.Forest;
+
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Forest forest = new Forest();
+		forest.initialisation();
+		forest.start();
 	}
 
 }
