@@ -11,6 +11,8 @@ public class Forest extends Thread {
 	private Point player;
 	private ArrayList<Point> monsters;
 	private ArrayList<Point> crevices;
+	private boolean running = false;
+	
 	/* 0 : nothing
 	 * 1 : player
 	 * 2 : portal
@@ -27,12 +29,13 @@ public class Forest extends Thread {
 		spawnPlayer();
 		firePortalGun();
 		printGrid();
+		setRunning();
 	}
 	
 	public void run() {
-		while(1 == 1) {
+		while(true) {
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(3000);
 				printGrid();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -190,5 +193,12 @@ public class Forest extends Thread {
 			grid[x][y-1] = 0;
 		}
 	}
+
+	public boolean running() {
+		return this.running;
+	}
 	
+	public void setRunning() {
+		this.running = true;
+	}
 }

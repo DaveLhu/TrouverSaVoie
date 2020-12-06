@@ -12,10 +12,11 @@ public class Main {
 		Forest forest = new Forest();
 		forest.initialisation();
 		
-		Point p = new Point(0,0);
+		Point p = new Point(3,3);
 		Agent agent = new Agent(p,forest);
 				
 		forest.start();
+		agent.run(); 
 	}
 
 }

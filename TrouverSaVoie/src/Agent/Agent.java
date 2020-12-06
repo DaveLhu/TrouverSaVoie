@@ -8,18 +8,37 @@ public class Agent extends Thread {
 	private Capteur capteur;
 	private Effecteur effecteur;
 	private volatile boolean runningR = true;
-	private Point point;
+	private Point position;
+	private volatile boolean runningA = true;
 	
 	public Agent(Point position, Forest grille) {
-		this.capteur = new Capteur(grille);
+		this.capteur = new Capteur(grille,position);
 		this.effecteur = new Effecteur(capteur);
 		effecteur.setPosition(position);
+		this.position = position;
 	}
 	
 	public void run() {
 		while(true) {
-			//if ()
+			if (capteur.getGrille().running() == true) {
+				
+				System.out.println("Agent positionné en : " + position.getX()  + " ; " + position.getY() );
+				//ArrayList<String> actions = 
+			}
+			while(runningA) {
+				try {
+					Thread.sleep(3000);
+					System.out.println("Agent positionné en : " + position.getX()  + " ; " + position.getY() );
+					
+					
+				}catch (InterruptedException e) {
+						e.printStackTrace();
+				}
+			}
 		}
 	}
 	
+	public void arreter() {
+		this.runningA = false;
+	}
 }
