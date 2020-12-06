@@ -34,7 +34,7 @@ public class Effecteur {
 		
 	}
 	
-	public void sortit(String exit) {
+	public void sortir(String exit) {
 		
 	
 	}

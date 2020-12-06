@@ -3,16 +3,19 @@ package Agent;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import Terrain.Forest;
+
 public class Capteur {
 	private ArrayList<Point> odeur;
 	private ArrayList<Point> vent;
 	private ArrayList<Point> lumiere;
+	private Forest grille;
 	
-	public Capteur() {
+	public Capteur(Forest grille) {
 		this.odeur = new ArrayList<>();
 		this.vent = new ArrayList<>();
 		this.lumiere = new ArrayList<>();
-		
+		this.grille = grille;
 
 	}
 	
@@ -36,7 +39,9 @@ public class Capteur {
 		this.lumiere = lumiere;
 	}
 	
-	
+	public Forest getGrille() {
+		return grille;
+	}
 	
 
 }
