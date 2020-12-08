@@ -20,29 +20,59 @@ public class Capteur {
 		this.position = position;
 	}
 	
+	public void getObjet(Point position) {
+		int objet = this.grille.getObjet(position);
+		switch(objet) {
+		case 1:
+			System.out.println("on est sur le joueur");
+			break;
+		case 2:
+			System.out.println("on est sur le portail");
+			break;
+		case 3:
+			System.out.println("on est sur le monstre");
+			System.out.println("vous avez perdu");
+			break;
+		case 4:
+			System.out.println("on est sur les mauvaises odeurs");
+			setOdeur(position);
+			break;
+		case 5:
+			System.out.println("on est sur la crevasse");
+			System.out.println("vous avez perdu");
+			break;
+		case 6:
+			System.out.println("on est sur le vent");
+			setVent(position);
+			break;
+		default :
+			System.out.println("il y a rien");
+			break;
+		}
+	}
 	
 	public ArrayList<Point> getOdeur() {
 		return odeur;
 	}
 	
-	public void setOdeur(ArrayList<Point> odeur) {
-		this.odeur = odeur;
+	public void setOdeur(Point position) {
+		this.odeur.add(position);
 	}
 	
 	public ArrayList<Point> getVent() {
 		return vent;
 	}
 	
-	public void setVent(ArrayList<Point> vent) {
-		this.vent = vent;
+	public void setVent(Point position) {
+		this.vent.add(position);
 	}
 	
 	public ArrayList<Point> getLumiere() {
 		return lumiere;
 	}
 	
-	public void setLumiere(ArrayList<Point> lumiere) {
-		this.lumiere = lumiere;
+	public void setLumiere(Point position) {
+		this.lumiere.add(position);
 	}
 	
 	public Forest getGrille() {
@@ -53,5 +83,9 @@ public class Capteur {
 		return position;
 	}
 	
-	
+	public void cleanLists() {
+		this.odeur.clear();
+		this.vent.clear();
+		this.lumiere.clear();
+	}
 }

@@ -26,7 +26,7 @@ public class Forest extends Thread {
 		size = 3;
 		grid = new int[size][size];
 		generateBiome();
-		spawnPlayer();
+		this.player = spawnPlayer();
 		firePortalGun();
 		printGrid();
 		setRunning();
@@ -35,7 +35,7 @@ public class Forest extends Thread {
 	public void run() {
 		while(true) {
 			try {
-				Thread.sleep(3000);
+				Thread.sleep(3001);
 				printGrid();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -49,7 +49,7 @@ public class Forest extends Thread {
 		initialisation();
 	}
 	
-	public void spawnPlayer() {
+	public Point spawnPlayer() {
 		int x = 0;
 		int y = 0;
 		while (grid[x][y] != 0) {
@@ -57,6 +57,7 @@ public class Forest extends Thread {
 			y = ThreadLocalRandom.current().nextInt(0, size);
 		}
 		grid[x][y] = 1;
+		return new Point(x,y);
 	}
 	
 	public void firePortalGun() {
@@ -68,6 +69,7 @@ public class Forest extends Thread {
 		}
 		grid[x][y] = 2;
 	}
+	
 	public Boolean generateEnvironment(int x, int y, int type) {
 		Boolean[] limits = new Boolean[]{false,false,false,false};
 		if (x+1 != size) {
@@ -200,5 +202,17 @@ public class Forest extends Thread {
 	
 	public void setRunning() {
 		this.running = true;
+	}
+
+	public int getObjet(Point position) {
+		return this.grid [(int) position.getX()][(int) position.getY()];
+	}
+
+	public Point getPlayer() {
+		return this.player;
+	}
+	
+	public int getSize() {
+		return this.size;
 	}
 }

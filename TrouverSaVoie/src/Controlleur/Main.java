@@ -12,7 +12,7 @@ public class Main {
 		Forest forest = new Forest();
 		forest.initialisation();
 		
-		Point p = new Point(3,3);
+		Point p = forest.getPlayer();
 		Agent agent = new Agent(p,forest);
 				
 		forest.start();

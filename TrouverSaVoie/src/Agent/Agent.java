@@ -1,6 +1,7 @@
 package Agent;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 import Terrain.Forest;
 
@@ -24,11 +25,15 @@ public class Agent extends Thread {
 				
 				System.out.println("Agent positionné en : " + position.getX()  + " ; " + position.getY() );
 				//ArrayList<String> actions = 
+				
 			}
 			while(runningA) {
 				try {
 					Thread.sleep(3000);
 					System.out.println("Agent positionné en : " + position.getX()  + " ; " + position.getY() );
+					capteur.getObjet(position);
+					effecteur.possibilitéDeplacement();
+					//effecteur.deplacement(direction);
 					
 					
 				}catch (InterruptedException e) {
