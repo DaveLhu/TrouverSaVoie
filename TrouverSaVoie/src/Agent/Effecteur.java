@@ -31,34 +31,43 @@ public class Effecteur {
 	
 	public ArrayList<Point> possibilitéDeplacement() {
 		ArrayList<Point> possibilities = new ArrayList<Point>();
+		ArrayList<String> possibilites = new ArrayList<String>();
 		Point player = capteur.getPosition();
 		int taille = capteur.getGrille().getSize();
 		if(player.x == 0 && player.x != taille-1) {
 			possibilities.add(new Point(player.x+1,player.y));
-			System.out.println("bas");
+			possibilites.add("BAS");
+			System.out.println("BAS");
 		}
 		else if(player.x != 0 && player.x != taille-1){
 			possibilities.add(new Point(player.x+1,player.y));
 			possibilities.add(new Point(player.x-1,player.y));
-			System.out.println("haut et bas");
+			possibilites.add("HAUT");
+			possibilites.add("BAS");
+			System.out.println("HAUT et BAS");
 		}
 		else if(player.x != 0 && player.x == taille-1) {
 			possibilities.add(new Point(player.x-1,player.y));
-			System.out.println("haut");
+			possibilites.add("HAUT");
+			System.out.println("HAUT");
 		}
 		
 		if(player.y == 0 && player.y != taille-1) {
 			possibilities.add(new Point(player.x,player.y+1));
-			System.out.println("droite");
+			possibilites.add("DROITE");
+			System.out.println("DROITE");
 		}
 		else if(player.y != 0 && player.y != taille-1){
 			possibilities.add(new Point(player.x,player.y+1));
 			possibilities.add(new Point(player.x,player.y-1));
-			System.out.println("droite et gauche");
+			possibilites.add("DROITE");
+			possibilites.add("GAUCHE");
+			System.out.println("DROITE et GAUCHE");
 		}
 		else if(player.y != 0 && player.y == taille-1) {
 			possibilities.add(new Point(player.x,player.y-1));
-			System.out.println("gauche");
+			possibilites.add("GAUCHE");
+			System.out.println("GAUCHE");
 		}		
 		return possibilities;
 	}
