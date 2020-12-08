@@ -29,7 +29,7 @@ public class Effecteur {
 		}
 	}
 	
-	public ArrayList<Point> possibilitéDeplacement() {
+	public ArrayList<String> possibilitéDeplacement() {
 		ArrayList<Point> possibilities = new ArrayList<Point>();
 		ArrayList<String> possibilites = new ArrayList<String>();
 		Point player = capteur.getPosition();
@@ -69,7 +69,7 @@ public class Effecteur {
 			possibilites.add("GAUCHE");
 			System.out.println("GAUCHE");
 		}		
-		return possibilities;
+		return possibilites;
 	}
 
 //on stack les roches que l'on peut lancer pour tuer un monstre.

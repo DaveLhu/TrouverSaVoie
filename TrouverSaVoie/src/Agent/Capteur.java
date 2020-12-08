@@ -13,9 +13,9 @@ public class Capteur {
 	private Point position;
 	
 	public Capteur(Forest grille, Point position) {
-		this.odeur = new ArrayList<>();
-		this.vent = new ArrayList<>();
-		this.lumiere = new ArrayList<>();
+		this.odeur = new ArrayList<Point>();
+		this.vent = new ArrayList<Point>();
+		this.lumiere = new ArrayList<Point>();
 		this.grille = grille;
 		this.position = position;
 	}
@@ -35,7 +35,8 @@ public class Capteur {
 			break;
 		case 4:
 			System.out.println("on est sur les mauvaises odeurs");
-			setOdeur(position);
+			this.odeur.add(new Point((int) position.getX(), (int) position.getY()));
+			System.out.println("odeur en : (" + position.x  + " ; " + position.y + ") ");
 			break;
 		case 5:
 			System.out.println("on est sur la crevasse");
@@ -43,7 +44,8 @@ public class Capteur {
 			break;
 		case 6:
 			System.out.println("on est sur le vent");
-			setVent(position);
+			this.vent.add(new Point((int) position.getX(), (int) position.getY()));
+			System.out.println("vent en : (" + position.x  + " ; " + position.y + ") ");
 			break;
 		default :
 			System.out.println("il y a rien");
@@ -88,4 +90,5 @@ public class Capteur {
 		this.vent.clear();
 		this.lumiere.clear();
 	}
+
 }
