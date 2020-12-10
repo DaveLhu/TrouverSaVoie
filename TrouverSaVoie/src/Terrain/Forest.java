@@ -4,17 +4,13 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Forest extends Thread {
+public class Forest {
 	private int size;
 	private int[][] grid;
-	private Point portal;
 	private Point player;
-	private ArrayList<Point> monsters;
-	private ArrayList<Point> crevices;
-	private boolean running = false;
 	
 	/* 0 : nothing
-	 * 1 : player
+	 * 1 : agent
 	 * 2 : portal
 	 * 3 : monsters
 	 * 4 : bad odor
@@ -26,21 +22,9 @@ public class Forest extends Thread {
 		size = 3;
 		grid = new int[size][size];
 		generateBiome();
-		this.player = spawnPlayer();
+		player = spawnPlayer();
 		firePortalGun();
 		printGrid();
-		setRunning();
-	}
-	
-	public void run() {
-		while(true) {
-			try {
-				Thread.sleep(3001);
-				printGrid();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 	
 	public void nextLevel() {
@@ -151,10 +135,10 @@ public class Forest extends Thread {
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				if (grid[i][j] == 1) {
-					System.out.print("P" + " ");
+					System.out.print("A" + " ");
 				}
 				else if (grid[i][j] == 2) {
-					System.out.print("X" + " ");
+					System.out.print("P" + " ");
 				}
 				else if (grid[i][j] == 3) {
 					System.out.print("M" + " ");
@@ -196,16 +180,8 @@ public class Forest extends Thread {
 		}
 	}
 
-	public boolean running() {
-		return this.running;
-	}
-	
-	public void setRunning() {
-		this.running = true;
-	}
-
-	public int getObjet(Point position) {
-		return this.grid [(int) position.getX()][(int) position.getY()];
+	public int getObject(Point position) {
+		return this.grid[position.x][position.y];
 	}
 
 	public Point getPlayer() {
